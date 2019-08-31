@@ -1,21 +1,98 @@
 <html>
-  <head>
-    <!-- Load the latest version of TensorFlow.js -->
-    <script src="https://unpkg.com/@tensorflow/tfjs"></script>
-    <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
-    <!-- so we can use the pre-trained KNN classifier -->
-    <script src="https://unpkg.com/@tensorflow-models/knn-classifier"></script>
-  </head>
-  <body>
-    <div id="console"></div>
-    <!-- Add an image that we will use to test -->
-    <!-- <img id="img" crossOrigin src="https://i.imgur.com/JlUvsxa.jpg" width=227 height=227/> -->
-    <video autoplay playsinline muted id="webcam" width="224" height="224"></video>
-    <!-- three buttons -->
-    <button id="class-a">Add A</button>
-    <button id="class-b">Add B</button>
-    <button id="class-c">Add C</button>
-    <!-- Load index.js after the content of the page -->
-    <script src="index.js"></script>
-  </body>
+
+<head>
+  <!-- BOOTSTRAP CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- BOOTSTRAP SCRIPTS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <!-- Load the latest version of TensorFlow.js -->
+  <script src="https://unpkg.com/@tensorflow/tfjs"></script>
+  <script src="https://unpkg.com/@tensorflow-models/mobilenet"></script>
+  <!-- so we can use the pre-trained KNN classifier -->
+  <script src="https://unpkg.com/@tensorflow-models/knn-classifier"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="jumbotron">
+          <h1 class="display-4">TensorFlowJS Image Classifier</h1>
+          <p class="lead">This is a simple image-classifier that runs in your browser using your web camera, a
+            pre-trained machine-learning model from TensorFlowJS, and input from you.</p>
+          <hr />
+          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#instructions"
+            aria-expanded="false" aria-controls="instructions">Instructions</button>
+          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#about"
+            aria-expanded="false" aria-controls="about">About</button>
+
+          <div class="collapse mt-4" id="instructions">
+            <div class="card card-body">
+              <h4>Instructions</h4>
+              <ol>
+                <li>Enable your webcam when prompted by your browser.</li>
+                <li>Find three nearby things you want to use to train the image classifier. For example: your face, a
+                  book, a wristwatch.</li>
+                <li>Decide which these three things you'll consider items A, B, and C.</li>
+                <li>Hold A in front of your webcam and click the 'Add A' button repeatedly.</li>
+                <li>Repeat for B (pressing the 'Add B' button) and for C (pressing the 'Add C' button).</li>
+                <li>Your model will get better at predicting which of the three items captured by the webcam is showing
+                  as you train it. Those predictions will show below 'Predictions'.</li>
+              </ol>
+              <p>Note: The classifier works best in Chrome.</p>
+            </div>
+          </div>
+
+          <div class="collapse mt-4" id="about">
+              <div class="card card-body">
+                <h4>About</h4>
+                <p>This is essentially a cleaned-up version of the 'Transfer learning image classifier' tutorial from TensorFlowJS. If you'd like to work through the tutorial yourself, <a href="https://www.tensorflow.org/js/tutorials/transfer/image_classification" target="_blank">click here.</a></p>
+                <p>If you'd like to learn more about me, <a href="https://eghove.github.io/" target="_blank">click here.</a></p>
+                <p>If you'd like to take a look at the GitHub repo for this project, <a href="https://github.com/eghove/tensor-flow-image-classifier" target="_blank">click here.</a></p>
+
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>Webcam Display</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <video autoplay playsinline muted id="webcam" width="100%" height="224"></video>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 text-center">
+        <h3>Predictions</h3>
+        <div id="console"></div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 text-center">
+        <button type="button" class="btn btn-success" id="class-a">Add A</button>
+        <button type="button" class="btn btn-success" id="class-b">Add B</button>
+        <button type="button" class="btn btn-success" id="class-c">Add C</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load index.js after the content of the page -->
+  <script src="index.js"></script>
+</body>
+
 </html>
